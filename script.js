@@ -1309,7 +1309,7 @@ function updateProcess(){
    PALETTE SWITCHER
    ============================================================ */
 function applyPalette(name){
-  if(!PALETTES.includes(name)) name = 'festive';
+  if(!PALETTES.includes(name)) name = 'midnight';
   document.documentElement.setAttribute('data-palette', name);
   qsa('.theme-item').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.paletteSet === name);
@@ -1348,8 +1348,8 @@ function wirePaletteDock(){
   if(!fab || !list) return;
 
   // Restore saved palette on boot
-  let saved = 'festive';
-  try{ saved = localStorage.getItem(PALETTE_KEY) || 'festive'; }catch(e){}
+  let saved = 'midnight';
+  try{ saved = localStorage.getItem(PALETTE_KEY) || 'midnight'; }catch(e){}
   applyPalette(saved);
 
   // FAB toggles the list
@@ -1585,6 +1585,7 @@ function wireEvents(){
 
 function boot(){
   document.documentElement.setAttribute('data-mode', 'festive');
+  document.documentElement.setAttribute('data-palette', 'midnight');
   document.body.setAttribute('data-route', 'home');
   const year = $('year'); if(year) year.textContent = new Date().getFullYear();
 
