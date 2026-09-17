@@ -349,7 +349,7 @@ body[data-route="home"] .festive-pattern{display:block}
 .festive-ganesha-wrap{position:relative;z-index:3;display:flex;justify-content:center;margin:0 auto;width:100%}
 .festive-ganesha{
   width:clamp(240px,32vw,420px);height:auto;
-  filter:drop-shadow(0 20px 40px rgba(193,91,42,.18));
+  filter:none;
   animation:ganeshaFloat 6s ease-in-out infinite alternate;
 }
 @keyframes ganeshaFloat{0%{transform:translateY(0)}100%{transform:translateY(-10px)}}
@@ -1337,11 +1337,6 @@ body[data-route="home"] .festive-pattern{display:block}
 [data-palette="midnight"] body[data-route="home"] .festive-pattern{
   filter:sepia(.5) saturate(.5) hue-rotate(-15deg) brightness(.75);
   opacity:.35;
-}
-
-/* Ganesha illustration — warm gold glow */
-[data-palette="midnight"] .festive-ganesha{
-  filter:drop-shadow(0 20px 40px rgba(194,155,46,.3));
 }
 
 /* Explorer trigger dot — gold ring */
