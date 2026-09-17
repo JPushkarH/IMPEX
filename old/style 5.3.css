@@ -124,6 +124,7 @@ h3{font-size:1.15rem;font-weight:700}
 .festive-pattern.left{left:clamp(-140px,-10vw,-60px);top:18%}
 .festive-pattern.right{right:clamp(-140px,-10vw,-60px);top:18%;transform:scaleX(-1)}
 
+/* Only show festive decorations on home route */
 body[data-route="home"] .toran{display:block}
 body[data-route="home"] .festive-pattern{display:block}
 
@@ -183,6 +184,7 @@ body[data-route="home"] .festive-pattern{display:block}
 .burger.open span::before{top:0;transform:rotate(45deg)}
 .burger.open span::after{top:0;transform:rotate(-45deg)}
 
+/* Nav states */
 .nav.transparent{
   background:transparent;
 }
@@ -227,9 +229,11 @@ body[data-route="home"] .festive-pattern{display:block}
 .mobile-menu a:hover{color:var(--accent-3);transform:translateX(6px)}
 
 /* ============================================================
-   EXPLORER PILL
+   EXPLORER PILL (reveals on scroll on #home)
    ============================================================ */
-.explorer{display:none !important}
+
+/* Hide explorer pill */
+.explorer{display:none !important}   
 
 .explorer{
   position:fixed;bottom:32px;right:32px;z-index:1200;
@@ -394,7 +398,7 @@ body[data-route="home"] .festive-pattern{display:block}
 .festive-badge-right .big{font-size:1.3rem;display:block}
 
 /* ============================================================
-   PRO HERO
+   PRO HERO (Services / Catalogue / About / Blog)
    ============================================================ */
 .pro-hero{
   padding:160px 0 80px;background:var(--hero-bg);position:relative;overflow:hidden;
@@ -1005,7 +1009,7 @@ body[data-route="home"] .festive-pattern{display:block}
 /* ============================================================
    WHATSAPP FLOAT
    ============================================================ */
-.wa-float{position:fixed;bottom:28px; right:24px;width:56px;height:56px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 12px 32px rgba(37,211,102,.4);z-index:900;transition:transform .3s}
+.wa-float{position:fixed;bottom:28px; right:24px;   /* left:28px; */width:56px;height:56px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 12px 32px rgba(37,211,102,.4);z-index:900;transition:transform .3s}
 .wa-float:hover{transform:scale(1.08) translateY(-3px)}
 .wa-float svg{width:30px;height:30px}
 
@@ -1058,7 +1062,7 @@ body[data-route="home"] .festive-pattern{display:block}
   .team-grid{grid-template-columns:repeat(3,1fr)}
   .nav-links{display:none}
   .burger{display:block}
-  .explorer{right:16px; bottom:96px}
+  .explorer{right:16px; bottom:96px;  /* bottom:16px */}
 }
 @media (max-width:768px){
   .sec{padding:70px 0}
@@ -1097,17 +1101,58 @@ body[data-route="home"] .festive-pattern{display:block}
 
 /* ============================================================
    THEME PALETTES — user-selectable accent overrides
+   Placed after [data-mode] rules so palettes win
    ============================================================ */
 
+/* Auto = no override — mode-driven accent applies */
 [data-palette="auto"]{}
 
+/* Festive — the default copper palette */
 [data-palette="festive"]{
   --accent:#C15B2A;
   --accent-2:#D97740;
   --accent-3:#E8A87C;
 }
 
-/* Midnight — LP 5.3 palette (light body · dark navy hero & sections · BRIGHT YELLOW accent) */
+/* /* Midnight — LP 5.3 palette (light body · dark navy hero & sections · gold accent) * /
+[data-palette="midnight"]{
+  /* ---- Backgrounds ---- * /
+  --bg:        #FBF9F4;
+  --bg-2:      #F2EEE4;
+  --bg-dark:   #050F22;
+  --bg-dark-2: #081A34;
+
+  /* ---- Surfaces (cards, drawers, forms) ---- * /
+  --surface:   #FFFFFF;
+  --surface-2: #F7F5EF;
+
+  /* ---- Text ---- * /
+  --text:      #08182F;
+  --text-2:    #5E6B80;
+  --text-3:    #8A94A6;
+
+  /* ---- Accent: gold ---- * /
+  --accent:         #C29B2E;
+  --accent-2:       #E3C566;
+  --accent-3:       #F5E4A8;
+  --accent-contrast:#081A34;
+
+  /* ---- Borders ---- * /
+  --border:      #E5E0D2;
+  --border-dark: rgba(255,255,255,.1);
+
+  /* ---- Shadows ---- * /
+  --shadow:    0 24px 60px -30px rgba(8,26,52,.4);
+  --shadow-lg: 0 40px 90px -40px rgba(8,26,52,.55);
+
+  /* ---- Hero (dark navy, matches LP 5.3 hero) ---- * /
+  --hero-bg:   radial-gradient(1200px 700px at 85% 0%, #1B3D6E 0%, transparent 55%),
+               radial-gradient(900px 600px at -10% 30%, #0F2A52 0%, transparent 50%),
+               linear-gradient(180deg,#050F22 0%,#081A34 45%,#0A2144 100%);
+  --hero-text: #FFFFFF;
+} */
+
+/* Midnight — LP 5.3 palette (light body · dark navy hero & sections · vibrant yellow accent) */
 [data-palette="midnight"]{
   /* ---- Backgrounds ---- */
   --bg:        #FBF9F4;
@@ -1115,7 +1160,7 @@ body[data-route="home"] .festive-pattern{display:block}
   --bg-dark:   #050F22;
   --bg-dark-2: #081A34;
 
-  /* ---- Surfaces ---- */
+  /* ---- Surfaces (cards, drawers, forms) ---- */
   --surface:   #FFFFFF;
   --surface-2: #F7F5EF;
 
@@ -1124,10 +1169,10 @@ body[data-route="home"] .festive-pattern{display:block}
   --text-2:    #5E6B80;
   --text-3:    #8A94A6;
 
-  /* ---- Accent: BRIGHT YELLOW (not gold) ---- */
-  --accent:         #F0C637;
-  --accent-2:       #FFD966;
-  --accent-3:       #FFE9A8;
+  /* ---- Accent: vibrant yellow (matches LP 5.3 hero) ---- */
+  --accent:         #F0B429;
+  --accent-2:       #F7CA4D;
+  --accent-3:       #FDE68A;
   --accent-contrast:#081A34;
 
   /* ---- Borders ---- */
@@ -1138,31 +1183,35 @@ body[data-route="home"] .festive-pattern{display:block}
   --shadow:    0 24px 60px -30px rgba(8,26,52,.4);
   --shadow-lg: 0 40px 90px -40px rgba(8,26,52,.55);
 
-  /* ---- Hero (dark navy gradient from LP 5.3 image) ---- */
+  /* ---- Hero (dark navy, matches LP 5.3 hero) ---- */
   --hero-bg:   radial-gradient(1200px 700px at 85% 0%, #1B3D6E 0%, transparent 55%),
                radial-gradient(900px 600px at -10% 30%, #0F2A52 0%, transparent 50%),
                linear-gradient(180deg,#050F22 0%,#081A34 45%,#0A2144 100%);
   --hero-text: #FFFFFF;
 }
 
+/* Sunset — coral warmth */
 [data-palette="sunset"]{
   --accent:#FF5C4A;
   --accent-2:#FF8B4A;
   --accent-3:#FFC58A;
 }
 
+/* Forest — deep green with gold */
 [data-palette="forest"]{
   --accent:#0D6B4A;
   --accent-2:#158760;
   --accent-3:#5ECBA1;
 }
 
+/* Mono — bold black + neon */
 [data-palette="mono"]{
   --accent:#111111;
   --accent-2:#333333;
   --accent-3:#C7FF00;
 }
 
+/* Pastel — soft lavender */
 [data-palette="pastel"]{
   --accent:#B48CFF;
   --accent-2:#F4A6C8;
@@ -1170,7 +1219,7 @@ body[data-route="home"] .festive-pattern{display:block}
 }
 
 /* ============================================================
-   THEME DOCK
+   THEME DOCK — nano floating switcher (bottom-left)
    ============================================================ */
 .theme-dock{
   position:fixed;left:20px;bottom:20px;z-index:1300;
@@ -1219,9 +1268,11 @@ body[data-route="home"] .festive-pattern{display:block}
 .theme-item:hover{transform:scale(1.3)}
 .theme-item.active{box-shadow:inset 0 0 0 1px rgba(0,0,0,.22),0 0 0 2px #fff}
 
+/* Swatch gradients per palette */
 .theme-item[data-palette-set="auto"]   {--sw:conic-gradient(from 90deg,#C15B2A,#0EA5A0,#4A154B,#C15B2A)}
 .theme-item[data-palette-set="festive"]{--sw:linear-gradient(135deg,#4A154B,#C15B2A)}
-.theme-item[data-palette-set="midnight"]{--sw:linear-gradient(135deg,#081A34,#F0C637)}
+/* .theme-item[data-palette-set="midnight"]{--sw:linear-gradient(135deg,#081A34,#C29B2E)} */
+.theme-item[data-palette-set="midnight"]{--sw:linear-gradient(135deg,#081A34,#F0B429)}
 .theme-item[data-palette-set="sunset"] {--sw:linear-gradient(135deg,#FF5C4A,#FFC58A)}
 .theme-item[data-palette-set="forest"] {--sw:linear-gradient(135deg,#0D6B4A,#5ECBA1)}
 .theme-item[data-palette-set="mono"]   {--sw:linear-gradient(135deg,#111111,#C7FF00)}
@@ -1236,261 +1287,331 @@ body[data-route="home"] .festive-pattern{display:block}
 }
 
 /* ============================================================
-   MIDNIGHT PALETTE — Section overrides (LP 5.3 · BRIGHT YELLOW)
+   MIDNIGHT PALETTE — Section overrides (mirrors LP 5.3)
    ============================================================ */
 
-/* ---------- ROUNDED CORNERS EVERYWHERE ---------- */
-[data-palette="midnight"] .btn,
-[data-palette="midnight"] .festive-btn,
-[data-palette="midnight"] .sp-cta,
-[data-palette="midnight"] .ganesha-cta,
-[data-palette="midnight"] .consultancy-promo-btn,
-[data-palette="midnight"] .service-link,
-[data-palette="midnight"] .q-send-btn,
-[data-palette="midnight"] .festive-login,
-[data-palette="midnight"] .product-add,
-[data-palette="midnight"] .modal-add,
-[data-palette="midnight"] .contact-form button,
-[data-palette="midnight"] .filter-pill,
-[data-palette="midnight"] .topic-pill{
-  border-radius: 99px;
-}
-
-/* ---------- DARK TEXT ON BRIGHT YELLOW FILLS ---------- */
-[data-palette="midnight"] .btn-primary,
-[data-palette="midnight"] .btn-gold,
-[data-palette="midnight"] .festive-btn-primary,
-[data-palette="midnight"] .ganesha-cta,
-[data-palette="midnight"] .consultancy-promo-btn,
-[data-palette="midnight"] .product-add,
-[data-palette="midnight"] .modal-add,
-[data-palette="midnight"] .contact-form button,
-[data-palette="midnight"] .festive-login,
-[data-palette="midnight"] .filter-pill.active,
-[data-palette="midnight"] .topic-pill.active{
-  color: var(--accent-contrast);
-}
-[data-palette="midnight"] .btn-gold:hover,
-[data-palette="midnight"] .festive-btn-primary:hover,
-[data-palette="midnight"] .ganesha-cta:hover,
-[data-palette="midnight"] .consultancy-promo-btn:hover,
-[data-palette="midnight"] .product-add:hover,
-[data-palette="midnight"] .modal-add:hover,
-[data-palette="midnight"] .contact-form button:hover,
-[data-palette="midnight"] .festive-login:hover{
-  color: var(--accent-contrast);
-}
-
-/* Yellow glow on primary fills */
-[data-palette="midnight"] .btn-primary{
-  box-shadow: 0 14px 30px -14px rgba(240,198,55,.55);
-}
-[data-palette="midnight"] .btn-gold{
-  box-shadow: 0 18px 38px -18px rgba(240,198,55,.55);
-}
-[data-palette="midnight"] .festive-btn-primary{
-  box-shadow: 0 14px 30px -14px rgba(240,198,55,.55);
-}
-[data-palette="midnight"] .ganesha-cta{
-  box-shadow: 0 18px 38px -18px rgba(240,198,55,.6);
-}
-[data-palette="midnight"] .nav-cart{
-  box-shadow: 0 10px 22px -10px rgba(240,198,55,.6);
-}
-
-/* Outlined buttons — yellow text, dark text on hover */
-[data-palette="midnight"] .sp-cta{
-  color: var(--accent);
-  border-color: var(--accent);
-}
-[data-palette="midnight"] .sp-cta:hover{
-  background: var(--accent);
-  color: var(--accent-contrast);
-}
-[data-palette="midnight"] .btn-outline:hover{
-  background: var(--accent);
-  color: var(--accent-contrast);
-  border-color: var(--accent);
-}
-
-/* ---------- NAV SOLID BAR ---------- */
+/* Nav solid bar — cream glass, same as LP 5.3 .nav.scrolled */
 [data-palette="midnight"] .nav.solid,
 [data-mode="festive"][data-palette="midnight"] .nav.solid{
-  background: rgba(251,249,244,.92);
-  box-shadow: 0 8px 30px -20px rgba(0,0,0,.5);
+  background:rgba(251,249,244,.92);
+  box-shadow:0 8px 30px -20px rgba(0,0,0,.5);
 }
 
-/* ---------- FESTIVE HERO (home) ---------- */
+/* Home (festive) hero — dark navy hero from LP 5.3 */
 [data-palette="midnight"] .festive-hero{
-  background: var(--hero-bg);
+  background:var(--hero-bg);
 }
 [data-palette="midnight"] .festive-hero::before{
-  opacity: .14;
-  mix-blend-mode: screen;
+  opacity:.14;
+  mix-blend-mode:screen;
 }
 
+/* Home hero text — light on the dark navy hero */
 [data-palette="midnight"] .hero-greeting h2{
-  color: var(--accent);
-  text-shadow: 0 2px 14px rgba(240,198,55,.35);
+  color:var(--accent-2);
+  text-shadow:0 2px 12px rgba(240,180,41,.35);
 }
 [data-palette="midnight"] .hero-greeting p,
 [data-palette="midnight"] .festive-subtitle,
 [data-palette="midnight"] .festive-tagline{
-  color: rgba(255,255,255,.88);
+  color:rgba(255,255,255,.85);
 }
 [data-palette="midnight"] .festive-disclaimer{
-  color: rgba(255,255,255,.75);
+  color:rgba(255,255,255,.72);
 }
 [data-palette="midnight"] .festive-disclaimer strong{
-  color: var(--accent);
+  color:var(--accent-2);
 }
 
+/* Festive CTA buttons — use yellow on the dark hero */
+[data-palette="midnight"] .festive-btn-primary{
+  background:var(--accent);
+  color:var(--accent-contrast);
+  box-shadow:0 14px 30px -14px rgba(240,180,41,.6);
+}
+[data-palette="midnight"] .festive-btn-primary:hover{
+  background:var(--accent-2);
+}
+[data-palette="midnight"] .festive-btn-outline{
+  color:var(--accent);
+  border-color:var(--accent);
+}
+[data-palette="midnight"] .festive-btn-outline:hover{
+  background:var(--accent);
+  color:var(--accent-contrast);
+}
+
+/* Festive login pill on hero */
+[data-palette="midnight"] .festive-login{
+  background:var(--accent);
+  color:var(--accent-contrast);
+}
+[data-palette="midnight"] .festive-login:hover{
+  background:var(--accent-2);
+}
+
+/* Home left badge — "21% off" */
 [data-palette="midnight"] .festive-badge-left{
-  background: var(--accent);
-  color: var(--accent-contrast);
-  box-shadow: 0 12px 28px -12px rgba(240,198,55,.55);
+  background:var(--accent);
+  color:var(--accent-contrast);
+  box-shadow:0 12px 28px -12px rgba(240,180,41,.5);
 }
 [data-palette="midnight"] .festive-badge-right{
-  color: var(--accent);
+  color:var(--accent-2);
 }
 
-/* ---------- PRO HERO ---------- */
+/* Ganesha illustration — warm yellow glow */
+[data-palette="midnight"] .festive-ganesha{
+  filter:drop-shadow(0 20px 40px rgba(240,180,41,.3));
+}
+
+/* Pro hero — light text on dark hero */
 [data-palette="midnight"] .pro-hero{
-  background: var(--hero-bg);
-  color: var(--hero-text);
+  color:var(--hero-text);
 }
 [data-palette="midnight"] .pro-hero h1{
-  color: var(--hero-text);
+  color:var(--hero-text);
 }
 [data-palette="midnight"] .pro-hero .eyebrow{
-  color: var(--accent);
+  color:var(--accent-2);
 }
 [data-palette="midnight"] .pro-hero .eyebrow .dot{
-  background: var(--accent);
+  background:var(--accent-2);
 }
 [data-palette="midnight"] .pro-hero-lede{
-  color: rgba(255,255,255,.8);
+  color:rgba(255,255,255,.8);
 }
 [data-palette="midnight"] .pro-hero::before{
-  background: radial-gradient(circle,rgba(240,198,55,.16),transparent 65%);
+  background:radial-gradient(circle,rgba(240,180,41,.15),transparent 65%);
 }
 [data-palette="midnight"] .pro-hero .btn-outline{
-  border-color: rgba(255,255,255,.35);
-  color: #fff;
+  border-color:rgba(255,255,255,.35);
+  color:#fff;
 }
 [data-palette="midnight"] .pro-hero .btn-outline:hover{
-  background: var(--accent);
-  border-color: var(--accent);
-  color: var(--accent-contrast);
+  border-color:var(--accent-2);
+  color:var(--accent-2);
 }
 
-/* ---------- CONSULTANCY PROMO ---------- */
-[data-palette="midnight"] .consultancy-promo,
-[data-mode="pro"][data-palette="midnight"] .consultancy-promo{
-  background: linear-gradient(135deg,#FFF8E0,#FFEFBF);
-  border-color: var(--accent);
-  box-shadow: 0 20px 40px -20px rgba(240,198,55,.45);
+/* Countdown — yellow numbers on light body */
+[data-palette="midnight"] .countdown-item .num{
+  color:var(--accent);
 }
-[data-palette="midnight"] .consultancy-promo-text h3{
-  color: var(--text);
-}
-[data-palette="midnight"] .consultancy-promo-text p{
-  color: var(--text-2);
-}
-[data-palette="midnight"] .consultancy-promo-price{
-  color: var(--accent);
+[data-palette="midnight"] .countdown-text strong{
+  color:var(--accent);
 }
 
-/* ---------- FESTIVE ORNAMENTS ---------- */
-[data-palette="midnight"] body[data-route="home"] .toran{
-  filter: brightness(.9) saturate(.85) drop-shadow(0 4px 8px rgba(0,0,0,.55));
-  opacity: .92;
-}
-[data-palette="midnight"] body[data-route="home"] .festive-pattern{
-  filter: sepia(.5) saturate(.5) hue-rotate(-15deg) brightness(.75);
-  opacity: .35;
-}
-
-/* ---------- GANESHA ILLUSTRATION — YELLOW GLOW ---------- */
-[data-palette="midnight"] .festive-ganesha{
-  filter: drop-shadow(0 20px 40px rgba(240,198,55,.4));
-}
-
-/* ---------- EXPLORER DOT ---------- */
-[data-palette="midnight"] .explorer-dot{
-  background: var(--accent);
-  box-shadow: 0 0 0 4px rgba(240,198,55,.35);
-}
-
-/* ---------- DARK SECTIONS ---------- */
-[data-palette="midnight"] .bg-dark .eyebrow{
-  color: var(--accent-3);
-}
-[data-palette="midnight"] .why-card:hover{
-  border-color: var(--accent);
-}
-[data-palette="midnight"] .approach-flow span:hover{
-  color: var(--accent-contrast);
-}
-[data-palette="midnight"] .approach-flow i{
-  color: var(--accent-3);
-}
-[data-palette="midnight"] .final-sub{
-  color: var(--accent-3);
-}
-[data-palette="midnight"] .final-contact-item:hover{
-  border-color: var(--accent);
-}
-[data-palette="midnight"] .final-contact-item .lbl,
-[data-palette="midnight"] .final-contact-item .val svg{
-  color: var(--accent);
-}
-[data-palette="midnight"] .footer-col h4{
-  color: var(--accent-3);
-}
-[data-palette="midnight"] .footer-contact-item:hover,
-[data-palette="midnight"] .footer-links-list a:hover,
-[data-palette="midnight"] .footer-bottom-links a:hover{
-  color: var(--accent);
-}
-[data-palette="midnight"] .footer-contact-item svg{
-  color: var(--accent);
-}
-[data-palette="midnight"] .mobile-menu a:hover{
-  color: var(--accent);
-}
-
-[data-palette="midnight"] .pain-note .tag{
-  color: var(--accent-3);
+/* Ganesha package — full yellow treatment */
+[data-palette="midnight"] .ganesha-badge{
+  background:var(--accent);
+  color:var(--accent-contrast);
 }
 [data-palette="midnight"] .ganesha-name em{
-  color: var(--accent-3);
+  color:var(--accent-3);
 }
-[data-palette="midnight"] .ganesha-save{
-  color: var(--accent-3);
-  background: rgba(240,198,55,.14);
-  border-color: rgba(240,198,55,.32);
+[data-palette="midnight"] .ganesha-items li::before{
+  background:var(--accent);
 }
 [data-palette="midnight"] .ganesha-right-label{
-  color: var(--accent-3);
+  color:var(--accent-3);
+}
+[data-palette="midnight"] .ganesha-save{
+  color:var(--accent-3);
+  background:rgba(240,180,41,.15);
+  border-color:rgba(240,180,41,.3);
+}
+[data-palette="midnight"] .ganesha-cta{
+  background:var(--accent);
+  color:var(--accent-contrast);
+  box-shadow:0 18px 38px -18px rgba(240,180,41,.7);
+}
+[data-palette="midnight"] .ganesha-cta:hover{
+  background:var(--accent-2);
+}
+[data-palette="midnight"] .ganesha-card.selected{
+  box-shadow:0 30px 60px -20px rgba(240,180,41,.6),0 0 0 3px rgba(240,180,41,.4);
+}
+
+/* Consultancy promo — yellow-tinted cream block on the light body */
+[data-palette="midnight"] .consultancy-promo,
+[data-mode="pro"][data-palette="midnight"] .consultancy-promo{
+  background:linear-gradient(135deg,#FFF9E7,#FFF0D4);
+  border-color:var(--accent);
+  box-shadow:0 20px 40px -20px rgba(240,180,41,.35);
+}
+[data-palette="midnight"] .consultancy-promo-icon{
+  background:var(--accent);
+  box-shadow:0 12px 24px -8px rgba(240,180,41,.6);
+}
+[data-palette="midnight"] .consultancy-promo-text h3{
+  color:var(--text);
+}
+[data-palette="midnight"] .consultancy-promo-text p{
+  color:var(--text-2);
+}
+[data-palette="midnight"] .consultancy-promo-price{
+  color:var(--accent);
+}
+[data-palette="midnight"] .consultancy-promo-btn{
+  background:var(--accent);
+  color:var(--accent-contrast);
+  box-shadow:0 14px 30px -14px rgba(240,180,41,.5);
+}
+[data-palette="midnight"] .consultancy-promo-btn:hover{
+  background:var(--accent-2);
+}
+
+/* Service price cards — yellow top bar + accents */
+[data-palette="midnight"] .service-price-card::before{
+  background:var(--accent);
+}
+[data-palette="midnight"] .sp-num{
+  background:var(--accent);
+  color:var(--accent-contrast);
+}
+[data-palette="midnight"] .sp-tag{
+  color:var(--accent);
 }
 [data-palette="midnight"] .sp-list li::before{
-  background: var(--accent);
+  background:var(--accent);
 }
 [data-palette="midnight"] .sp-list li::after{
-  border-color: var(--accent-contrast);
+  border-left-color:var(--accent-contrast);
+  border-bottom-color:var(--accent-contrast);
 }
-[data-palette="midnight"] .step.active .step-num,
-[data-palette="midnight"] .step:hover .step-num{
-  color: var(--accent-contrast);
+[data-palette="midnight"] .sp-price-save{
+  color:var(--accent);
 }
-[data-palette="midnight"] .who-foot em{
-  color: var(--accent);
+[data-palette="midnight"] .sp-price-save::before{
+  background:var(--accent);
 }
-[data-palette="midnight"] .faq-icon::before,
-[data-palette="midnight"] .faq-icon::after{
-  background: var(--text);
+[data-palette="midnight"] .sp-cta{
+  color:var(--accent);
+  border-color:var(--accent);
 }
-[data-palette="midnight"] .faq-item[open] .faq-icon::before{
-  background: var(--accent-contrast);
+[data-palette="midnight"] .sp-cta:hover{
+  background:var(--accent);
+  color:var(--accent-contrast);
+}
+[data-palette="midnight"] .sp-cta.added{
+  background:#1F8A3B;
+  border-color:#1F8A3B;
+  color:#fff;
+}
+
+/* Festive ornaments — softened against the dark hero */
+[data-palette="midnight"] body[data-route="home"] .toran{
+  filter:brightness(.9) saturate(.85) drop-shadow(0 4px 8px rgba(0,0,0,.55));
+  opacity:.92;
+}
+[data-palette="midnight"] body[data-route="home"] .festive-pattern{
+  filter:sepia(.5) saturate(.5) hue-rotate(-15deg) brightness(.75);
+  opacity:.35;
+}
+
+/* Explorer trigger dot — yellow ring */
+[data-palette="midnight"] .explorer-dot{
+  background:var(--accent);
+  box-shadow:0 0 0 4px rgba(240,180,41,.35);
+}
+
+/* Nav cart badge — yellow */
+[data-palette="midnight"] .nav-cart{
+  background:var(--accent);
+  color:var(--accent-contrast);
+  box-shadow:0 10px 22px -10px rgba(240,180,41,.6);
+}
+
+
+/* Nav solid bar — cream glass, same as LP 5.3 .nav.scrolled */
+[data-palette="midnight"] .nav.solid,
+[data-mode="festive"][data-palette="midnight"] .nav.solid{
+  background:rgba(251,249,244,.92);
+  box-shadow:0 8px 30px -20px rgba(0,0,0,.5);
+}
+
+/* Home (festive) hero — dark navy hero from LP 5.3 */
+[data-palette="midnight"] .festive-hero{
+  background:var(--hero-bg);
+}
+[data-palette="midnight"] .festive-hero::before{
+  opacity:.14;
+  mix-blend-mode:screen;
+}
+
+/* Home hero text — light on the dark navy hero */
+[data-palette="midnight"] .hero-greeting h2{
+  color:var(--accent-2);
+  text-shadow:0 2px 12px rgba(194,155,46,.35);
+}
+[data-palette="midnight"] .hero-greeting p,
+[data-palette="midnight"] .festive-subtitle,
+[data-palette="midnight"] .festive-tagline{
+  color:rgba(255,255,255,.85);
+}
+[data-palette="midnight"] .festive-disclaimer{
+  color:rgba(255,255,255,.72);
+}
+[data-palette="midnight"] .festive-disclaimer strong{
+  color:var(--accent-2);
+}
+
+/* Pro hero — light text on dark hero */
+[data-palette="midnight"] .pro-hero{
+  color:var(--hero-text);
+}
+[data-palette="midnight"] .pro-hero h1{
+  color:var(--hero-text);
+}
+[data-palette="midnight"] .pro-hero .eyebrow{
+  color:var(--accent-2);
+}
+[data-palette="midnight"] .pro-hero .eyebrow .dot{
+  background:var(--accent-2);
+}
+[data-palette="midnight"] .pro-hero-lede{
+  color:rgba(255,255,255,.8);
+}
+[data-palette="midnight"] .pro-hero::before{
+  background:radial-gradient(circle,rgba(194,155,46,.15),transparent 65%);
+}
+[data-palette="midnight"] .pro-hero .btn-outline{
+  border-color:rgba(255,255,255,.35);
+  color:#fff;
+}
+[data-palette="midnight"] .pro-hero .btn-outline:hover{
+  border-color:var(--accent-2);
+  color:var(--accent-2);
+}
+
+/* Consultancy promo — gold-tinted cream block on the light body */
+[data-palette="midnight"] .consultancy-promo,
+[data-mode="pro"][data-palette="midnight"] .consultancy-promo{
+  background:linear-gradient(135deg,#FFF8E7,#FFF0D4);
+  border-color:var(--accent);
+  box-shadow:0 20px 40px -20px rgba(194,155,46,.35);
+}
+[data-palette="midnight"] .consultancy-promo-text h3{
+  color:var(--text);
+}
+[data-palette="midnight"] .consultancy-promo-text p{
+  color:var(--text-2);
+}
+[data-palette="midnight"] .consultancy-promo-price{
+  color:var(--accent);
+}
+
+/* Festive ornaments — softened against the dark hero */
+[data-palette="midnight"] body[data-route="home"] .toran{
+  filter:brightness(.9) saturate(.85) drop-shadow(0 4px 8px rgba(0,0,0,.55));
+  opacity:.92;
+}
+[data-palette="midnight"] body[data-route="home"] .festive-pattern{
+  filter:sepia(.5) saturate(.5) hue-rotate(-15deg) brightness(.75);
+  opacity:.35;
+}
+
+/* Explorer trigger dot — gold ring */
+[data-palette="midnight"] .explorer-dot{
+  box-shadow:0 0 0 4px rgba(194,155,46,.35);
 }
