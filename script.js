@@ -18,7 +18,7 @@ const SHEET_CONFIG = {
 const ADMIN_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbykrC6Z-UqJwP9NSZkHQJ29SqkHQ4bTO_jWC1M85tiwhnhlVQHLdVqxn9ohW46v3xYl/exec";
 const CLIENT_ID = "sharved";
 const DATA_SPREADSHEET_ID = "16IldVlEwAsgoQSCj4DLPrXwjnFbfABpZLjzIBxTr2Wg";
-const QUOTATIONS_FOLDER_ID = "";
+const QUOTATIONS_FOLDER_ID = "1Ms6dg3_ltr41lTEtWN4aOn7L_ved0C_f";
 
 const SHEETS_URL = (tab) => `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_CONFIG.SPREADSHEET_ID}/values/${encodeURIComponent(tab)}?key=${SHEET_CONFIG.API_KEY}`;
 
